@@ -45,6 +45,7 @@ Supported Jetty options:
   `:request_log_path` are specified, then request logging will not be enabled.
 * `:request_log_path` The path where the `NCSARequestLog` should log to. If neither this nor `:request_log` are
   specified, then request logging will not be enabled.
+* `:resource_base` Base folder for resolving resources (such as `config.ru`). Default is `.`.
 
 # Dependencies
 

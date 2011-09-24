@@ -79,6 +79,7 @@ module Rack
 
       root = Context.new(contextHandlers, "/", Context::NO_SESSIONS)
       root.set_init_params(options)
+      root.set_resource_base(options[:resource_base] || '.')
       root.add_filter(FilterHolder.new(RackFilter.new), "/*", Handler::DEFAULT)
       root.add_event_listener(RackServletContextListener.new)
       root.add_servlet(ServletHolder.new(DefaultServlet.new), "/")
