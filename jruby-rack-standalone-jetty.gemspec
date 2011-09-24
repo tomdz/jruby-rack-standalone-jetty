@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
+    "jruby-rack-standalone-jetty.gemspec",
     "lib/rack/jetty_standalone/jetty_runner.rb"
   ]
   s.homepage = %q{http://github.com/tomdz/jruby-rack-standalone-jetty}
