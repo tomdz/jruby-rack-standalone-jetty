@@ -25,8 +25,8 @@ module Rack
   class JettyRunner
     attr_reader :options
   
-    def initialize(options={})
-      @options = options
+    def initialize(opts = {})
+      @options = opts
     end
   
     def run()
@@ -42,7 +42,7 @@ module Rack
 
       stats_on = options[:with_stats] || true
 
-      if options[:nio] || true
+      if options[:use_nio] || true
         http_connector = SelectChannelConnector.new
         http_connector.setLowResourcesConnections(20000)
       else
@@ -78,7 +78,7 @@ module Rack
       contextHandlers = ContextHandlerCollection.new
 
       root = Context.new(contextHandlers, "/", Context::NO_SESSIONS)
-      root.set_init_params(@options)
+      root.set_init_params(options)
       root.add_filter(FilterHolder.new(RackFilter.new), "/*", Handler::DEFAULT)
       root.add_event_listener(RackServletContextListener.new)
       root.add_servlet(ServletHolder.new(DefaultServlet.new), "/")
